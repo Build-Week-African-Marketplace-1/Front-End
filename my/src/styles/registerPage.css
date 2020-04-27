@@ -1,0 +1,11 @@
+/* sign up page styling */
+
+.whole {
+  padding: 1%;
+}
+
+.Holder {
+  background: url("../Images/karim-manjra-fm9wqDNXyQ0-unsplash.jpg");
+  background-size: cover;
+  height: 900px;
+}
