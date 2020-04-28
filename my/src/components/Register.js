@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export default function Register() {
 	const { register, errors } = useForm();
+
 	const [signupInfo, newSignupInfo] = useState({
-		name: '',
+		username: '',
 		email: '',
 		pasword: '',
 	});
@@ -21,36 +21,36 @@ export default function Register() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		axiosWithAuth()
-			.post('/api/auth/register', newSignupInfo)
+			.post('/api/auth/register', signupInfo)
 			.then((res) => {
 				console.log({ res });
-				//push('');
+				// push this to re- log in
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch((errors) => {
+				console.log(errors);
 			});
 	};
 
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<input
 				type="text"
 				placeholder="User Name"
-				name="User Name"
+				name="username"
 				onChange={handleChange}
 				ref={register({ required: true, min: 2, maxLength: 80 })}
 			/>
 			<input
 				type="text"
 				placeholder="Email"
-				name="Email"
+				name="email"
 				onChange={handleChange}
 				ref={register({ required: true, pattern: /^\S+@\S+$/i })}
 			/>
 			<input
-				type="text"
+				type="password"
 				placeholder="Password"
-				name="Password"
+				name="password"
 				onChange={handleChange}
 				ref={register({ required: true, min: 1, maxLength: 12 })}
 			/>
