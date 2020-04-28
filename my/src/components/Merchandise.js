@@ -18,7 +18,7 @@ export default function App() {
       />
 
       <input
-        type="text"
+        type="number"
         placeholder="quantity"
         name="quantity"
         ref={register({ required: true, min: 1 })}
