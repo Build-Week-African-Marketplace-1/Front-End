@@ -8,7 +8,6 @@ import SignUp from "./components/registerPage";
 function App() {
   return (
     <div className="App">
-      <h1>African Marketplace</h1>
       <Route exact path="/" component={Login} />
       <Route path="/register" component={SignUp} />
     </div>
