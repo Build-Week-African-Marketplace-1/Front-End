@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-export default function Register() {
-  const { register, errors } = useForm();
+export default function Register(props) {
+  const { register } = useForm();
 
   const [signupInfo, newSignupInfo] = useState({
     username: "",
     email: "",
-    pasword: "",
+    password: "",
   });
 
   const handleChange = (event) => {
@@ -20,10 +20,12 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(signupInfo);
     axiosWithAuth()
-      .post("/api/auth/register", newSignupInfo)
+      .post("/api/auth/register", signupInfo)
       .then((res) => {
         console.log({ res });
+        props.push("/");
         // push this to re- log in
       })
       .catch((error) => {
