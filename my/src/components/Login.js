@@ -34,7 +34,7 @@ export default function Login(props) {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<Link to={'/Register'}>Register</Link>
+			<div>Log In</div>
 			<input
 				onChange={handleChanges}
 				type="text"
@@ -42,6 +42,7 @@ export default function Login(props) {
 				name="username"
 				ref={register({ required: true, min: 2, maxLength: 80 })}
 			/>
+			<br></br>
 			<input
 				type="password"
 				onChange={handleChanges}
@@ -49,8 +50,13 @@ export default function Login(props) {
 				name="password"
 				ref={register({ required: true, min: 1, maxLength: 12 })}
 			/>
+			<br></br>
 
 			<input type="submit" />
+			<br></br>
+			<Link className="link" to={'/Register'}>
+				Sign up HERE
+			</Link>
 		</form>
 	);
 }

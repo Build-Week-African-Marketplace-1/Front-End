@@ -8,13 +8,25 @@
 
 .Holder {
   padding: 7%;
-  padding-left: 30%;
-  display: flex;
+  padding-left: 34%;
 }
 
 .card {
-  background-color: yellow;
+  background-color: #f6f7d7;
   height: 250px;
-  width: 590px;
+  width: 490px;
+  border-radius: 5%;
+  display: flex;
   flex-direction: column;
+  color: #3ec1d3;
+}
+
+.link {
+  font-size: 15px;
+  color: #3ec1d3;
+}
+
+.info {
+  font-size: 25px;
+  padding: 6%;
 }
