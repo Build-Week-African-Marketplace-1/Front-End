@@ -39,13 +39,13 @@ export default function Login(props) {
 				onChange={handleChanges}
 				type="text"
 				placeholder="User Name"
-				name="User Name"
+				name="username"
 				ref={register({ required: true, min: 2, maxLength: 80 })}
 			/>
 			<input
 				type="text"
 				placeholder="Password"
-				name="Password"
+				name="password"
 				ref={register({ required: true, min: 1, maxLength: 12 })}
 			/>
 
