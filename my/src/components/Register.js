@@ -26,7 +26,6 @@ export default function Register(props) {
       .then((res) => {
         console.log({ res });
         props.push("/");
-        // push this to re- log in
       })
       .catch((error) => {
         console.log(error);
@@ -35,6 +34,7 @@ export default function Register(props) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div>Sign Up!</div>
       <input
         type="text"
         placeholder="User Name"
@@ -42,6 +42,7 @@ export default function Register(props) {
         onChange={handleChange}
         ref={register({ required: true, min: 2, maxLength: 80 })}
       />
+      <br />
       <input
         type="text"
         placeholder="Email"
@@ -49,6 +50,7 @@ export default function Register(props) {
         onChange={handleChange}
         ref={register({ required: true, pattern: /^\S+@\S+$/i })}
       />
+      <br />
       <input
         type="password"
         placeholder="Password"
@@ -56,7 +58,7 @@ export default function Register(props) {
         onChange={handleChange}
         ref={register({ required: true, min: 1, maxLength: 12 })}
       />
-
+      <br />
       <input type="submit" />
     </form>
   );

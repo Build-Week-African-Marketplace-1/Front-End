@@ -1,9 +1,9 @@
 import React from "react";
-import Register from "./Register";
+import Login from "./Login";
 import Header from "./nav";
 import "../styles/registerPage.css";
 
-export default function Signup() {
+export default function LoginPage() {
   return (
     <div className="cont">
       <div className="nav">
@@ -12,7 +12,7 @@ export default function Signup() {
       <div className="Holder">
         <div className="card">
           <div className="info">
-            <Register />
+            <Login />
           </div>
         </div>
       </div>
