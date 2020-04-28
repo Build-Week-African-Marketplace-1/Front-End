@@ -25,7 +25,7 @@ export default function Login(props) {
 		setLogin({ ...login, isFetching: true });
 		console.log(login);
 		axiosWithAuth()
-			.post('/api/auth/login')
+			.post('/api/auth/login', login)
 			.then((res) => {
 				console.log(res);
 			})
@@ -43,7 +43,8 @@ export default function Login(props) {
 				ref={register({ required: true, min: 2, maxLength: 80 })}
 			/>
 			<input
-				type="text"
+				type="password"
+				onChange={handleChanges}
 				placeholder="Password"
 				name="password"
 				ref={register({ required: true, min: 1, maxLength: 12 })}
