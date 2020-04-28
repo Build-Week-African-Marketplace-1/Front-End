@@ -54,7 +54,7 @@ export default function Register() {
         ref={register({ required: true, min: 1, maxLength: 12 })}
       />
 
-      <input type="submit" />
-    </form>
-  );
+			<input type="submit" />
+		</form>
+	);
 }
