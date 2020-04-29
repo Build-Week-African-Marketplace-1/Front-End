@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ProductsList = () => {
+
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const history = useHistory();

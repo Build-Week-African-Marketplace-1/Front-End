@@ -1,14 +1,15 @@
-import React from "react";
-import "./App.css";
-import { Route } from "react-router-dom";
-import Merchandise from "./components/Merchandise";
 
-import Login from "./components/LoginPage";
+import React from 'react';
+import './App.css';
+import { Route } from 'react-router-dom';
+import Merchandise from './components/Merchandise';
+
+import Login from './components/LoginPage';
 
 // import Login from "./components/Login";
 // import Register from "./components/Register";
-import SignUp from "./components/registerPage";
-import ProductsList from "./components/ProductsList";
+import SignUp from './components/registerPage';
+import ProductsList from './components/ProductsList';
 
 function App() {
   return (
@@ -22,4 +23,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
