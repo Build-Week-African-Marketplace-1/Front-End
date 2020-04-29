@@ -25,7 +25,7 @@ export default function Login(props) {
     setLogin({ ...login, isFetching: true });
     console.log(login);
     axiosWithAuth()
-      .post("/api/auth/login", login)
+      .get("/api/products", login)
       .then((res) => {
         console.log(res);
       })
