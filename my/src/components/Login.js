@@ -32,10 +32,33 @@ export default function Login(props) {
 			.catch((err) => console.log('There was a problem with loging in ', err));
 	};
 
-	return (
-		<form onSubmit={handleSubmit}>
-			<Link to={'/Merchandise'}>Merchandise</Link>
-			<div>Log In</div>
+
+  return (
+
+  
+   
+      
+    <form onSubmit={handleSubmit}>
+    <Link to={"/Merchandise"}>Merchandise</Link>
+      <div>Log In</div>
+
+      <input
+        onChange={handleChanges}
+        type="text"
+        placeholder="User Name"
+        name="username"
+        ref={register({ required: true, min: 2, maxLength: 80 })}
+      />
+      <br></br>
+      <input
+        type="password"
+        onChange={handleChanges}
+        placeholder="Password"
+        name="password"
+        ref={register({ required: true, min: 1, maxLength: 12 })}
+      />
+      <br></br>
+
 
 			<input
 				onChange={handleChanges}
