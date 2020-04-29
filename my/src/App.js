@@ -14,11 +14,12 @@ function App() {
   return (
     <div className="App">
       <Route exact path="/" component={Login} />
-      <Route path="/products" component={ProductsList} />
-      <Route path="/Merchandise" component={Merchandise} />
+
+      <Route path="/products/:id" component={Merchandise} />
+
       <Route path="/register" component={SignUp} />
+      <Route exact path="/products" component={ProductsList} />
     </div>
   );
 }
-
 export default App;
