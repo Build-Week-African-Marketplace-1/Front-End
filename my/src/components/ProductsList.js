@@ -33,6 +33,8 @@ const ProductsList = () => {
           <div key={products.id}>
             <h2>{`Name : ${products.product}`}</h2>
             <h2>{`Category :${products.category}`}</h2>
+            <button>Edit</button>
+            <button>delete</button>
           </div>
         ))}
       </div>

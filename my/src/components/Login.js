@@ -56,23 +56,6 @@ export default function Login(props) {
       />
       <br></br>
 
-      <input
-        onChange={handleChanges}
-        type="text"
-        placeholder="User Name"
-        name="username"
-        ref={register({ required: true, min: 2, maxLength: 80 })}
-      />
-      <br></br>
-      <input
-        type="password"
-        onChange={handleChanges}
-        placeholder="Password"
-        name="password"
-        ref={register({ required: true, min: 1, maxLength: 12 })}
-      />
-      <br></br>
-
       <input type="submit" />
       <br></br>
       <Link className="link" to={"/Register"}>
