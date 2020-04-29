@@ -17,6 +17,7 @@ const ProductsList = () => {
 			.get('/api/products')
 			.then((res) => {
 				setIsFetching(false);
+				console.log(res);
 				setProducts(res.data);
 			})
 			.catch((err) => console.log(err));
@@ -32,8 +33,10 @@ const ProductsList = () => {
 			<div>
 				{products.map((products) => (
 					<div key={products.id}>
-						<h2>{`Name : ${products.product}`}</h2>
-						<h2>{`Category : ${products.category}`}</h2>
+						<h2>{`Name : ${products.name}`}</h2>
+						<h2>{`Description : ${products.description}`}</h2>
+						<h2>{`Quantity : ${products.quantity}`}</h2>
+						<h2>{`Price : ${products.price}`}</h2>
 					</div>
 				))}
 			</div>
