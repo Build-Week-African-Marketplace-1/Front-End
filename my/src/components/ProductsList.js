@@ -12,11 +12,12 @@ const ProductsList = () => {
 	console.log(products);
 
 	useEffect(() => {
+		setIsFetching(true);
 		axiosWithAuth()
 			.get('/api/products')
 			.then((res) => {
-				setProducts(res.data);
 				setIsFetching(false);
+				setProducts(res.data);
 			})
 			.catch((err) => console.log(err));
 	}, []);
@@ -32,7 +33,7 @@ const ProductsList = () => {
 				{products.map((products) => (
 					<div key={products.id}>
 						<h2>{`Name : ${products.product}`}</h2>
-						<h2>{`Category :${products.category}`}</h2>
+						<h2>{`Category : ${products.category}`}</h2>
 					</div>
 				))}
 			</div>
