@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 //componnents
 
@@ -10,7 +10,6 @@ const ProductsList = (props) => {
 	const [products, setProducts] = useState([]);
 	const [isFetching, setIsFetching] = useState(false);
 	const history = useHistory();
-	const { id } = useParams();
 
 	console.log(products);
 
@@ -32,7 +31,6 @@ const ProductsList = (props) => {
 	};
 
 	const deleteItem = (id) => {
-		// e.preventDefault();
 		console.log(id);
 		axiosWithAuth()
 			.delete(`/api/products/${id}`)
@@ -46,18 +44,6 @@ const ProductsList = (props) => {
 			})
 			.catch((err) => console.log(err));
 	};
-
-	// const deleteColor = (color) => {
-	// 	axiosWithAuth()
-	// 	  .delete(`/api/colors/${color.id}`)
-	// 	  .then((res) => {
-	// 		console.log({ res });
-	// 		updateColors(colors.filter((item) => item.id !== color.id));
-	// 	  })
-	// 	  .catch((error) => {
-	// 		console.log(error);
-	// 	  });
-	//   };
 
 	return (
 		<div className="productslist">
