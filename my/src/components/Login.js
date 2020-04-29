@@ -33,6 +33,21 @@ export default function Login(props) {
 	};
 
 
+  //create handle submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLogin({ ...login, isFetching: true });
+    console.log(login);
+    axiosWithAuth()
+      .get("/api/products", login)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log("There was a problem with loging in ", err));
+  };
+
+
+
   return (
 
   
@@ -40,6 +55,7 @@ export default function Login(props) {
       
     <form onSubmit={handleSubmit}>
     <Link to={"/Merchandise"}>Merchandise</Link>
+
       <div>Log In</div>
 
       <input
