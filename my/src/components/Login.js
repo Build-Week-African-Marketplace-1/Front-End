@@ -34,7 +34,9 @@ export default function Login(props) {
 
 	return (
 		<form onSubmit={handleSubmit}>
+			<Link to={'/Merchandise'}>Merchandise</Link>
 			<div>Log In</div>
+
 			<input
 				onChange={handleChanges}
 				type="text"
