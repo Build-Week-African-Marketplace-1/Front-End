@@ -33,12 +33,8 @@ export default function Login(props) {
   };
 
   return (
-
-  
-   
-      <Link to={"/Merchandise"}>Merchandise</Link>
-
     <form onSubmit={handleSubmit}>
+      <Link to={"/Merchandise"}>Merchandise</Link>
       <div>Log In</div>
 
       <input
