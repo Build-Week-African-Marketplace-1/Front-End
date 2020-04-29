@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Loader from "react-loader-spinner";
+import React, { useState, useEffect } from 'react';
+import Loader from 'react-loader-spinner';
 
 //componnents
 
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const ProductsList = () => {
-
 	const [products, setProducts] = useState([]);
 	const [isFetching, setIsFetching] = useState(false);
 
@@ -43,6 +42,6 @@ const ProductsList = () => {
 			</div>
 		</div>
 	);
-
+};
 
 export default ProductsList;
