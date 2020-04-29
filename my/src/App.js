@@ -15,10 +15,10 @@ function App() {
 		<div className="App">
 			<Route exact path="/" component={Login} />
 
-			<Route path="/Merchandise" component={Merchandise} />
+			<Route path="/products/:id" component={Merchandise} />
 
 			<Route path="/register" component={SignUp} />
-			<Route path="/products" component={ProductsList} />
+			<Route exact path="/products" component={ProductsList} />
 		</div>
 	);
 }
