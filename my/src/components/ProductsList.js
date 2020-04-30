@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
+import Header from "./nav";
+import AddItem from "./AddProduct";
+
+import "../styles/registerPage.css";
 
 //componnents
 
@@ -46,7 +50,13 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="productslist">
+    <div>
+      <div>
+        <Header />
+      </div>
+      <div>
+        <AddItem setProducts={setProducts} products={products} />
+      </div>
       <h3>List of items for sale</h3>
 
       {isFetching && (
