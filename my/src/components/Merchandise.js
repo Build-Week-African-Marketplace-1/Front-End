@@ -21,25 +21,12 @@ export default function Merchandise(props) {
 	console.log('Thsi is the new item', newItem);
 	console.log('Thsi is the new item', setNewItem);
 
-	// 	import { useHistory } from "react-router-dom";
-	// function HomeButton() {
-	//   let history = useHistory();
-	//   function handleClick() {
-	//     history.push("/home");
-	//   }
-	//   return (
-	//     <button type="button" onClick={handleClick}>
-	//       Go home
-	//     </button>
-	//   );
-	// }
-
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`/api/products/${id}`)
 
 			.then((res) => {
-				console.log({ res });
+				console.log('edit line 29', res);
 				setNewItem(res.data);
 			})
 			.catch((error) => {
