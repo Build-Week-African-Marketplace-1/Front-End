@@ -25,7 +25,7 @@ export default function Merchandise() {
         type="number"
         placeholder="Quantity"
         name="Quantity"
-        ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+        ref={register({ required: true })}
       />
       <input
         type="text"
