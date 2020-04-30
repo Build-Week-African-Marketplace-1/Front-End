@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Header from './nav';
-import AddProduct from './AddProduct';
+import AddItem from './AddProduct';
 
 import '../styles/registerPage.css';
 
@@ -10,30 +10,34 @@ import '../styles/registerPage.css';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const ProductsList = () => {
+const ProductsList = (props) => {
 	const [products, setProducts] = useState([]);
 	const [counter, setCounter] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
 	const history = useHistory();
+	const { id } = useParams();
 
 	console.log(products);
+	console.log('this is the Id', id);
 
 	useEffect(() => {
-		setIsFetching(true);
 		axiosWithAuth()
-			.get('/api/products')
+			.get(`api/users/${id}/products`)
 			.then((res) => {
-				setIsFetching(false);
-				console.log(res);
+				console.log({ res });
 				setProducts(res.data);
+				isFetching(true);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.log(err.response));
 	}, []);
-	useEffect(() => {}, [counter]);
 
 	const handleClick = (id) => {
-		console.log('I was clicked!!');
-		return history.push(`/products/${id}`);
+		const item = products.filter((product) => {
+			return product.id === id;
+		});
+		props.setNewItem(item[0]);
+		props.setTracker(!props.tracker);
+		history.push(`/products/${id}`);
 	};
 
 	const deleteItem = (id) => {
@@ -57,7 +61,7 @@ const ProductsList = () => {
 				<Header />
 			</div>
 			<div>
-				<AddProduct
+				<AddItem
 					setProducts={setProducts}
 					products={products}
 					setCounter={setCounter}
@@ -71,17 +75,17 @@ const ProductsList = () => {
 			)}
 
 			<div>
-				{products &&
-					products.map((products) => (
-						<div key={products.id}>
-							<h2>{`Name : ${products.name}`}</h2>
-							<h2>{`Description : ${products.description}`}</h2>
-							<h2>{`Quantity : ${products.quantity}`}</h2>
-							<h2>{`Price : ${products.price}`}</h2>
-							<button onClick={() => handleClick(products.id)}>Edit</button>
-							<button onClick={() => deleteItem(products.id)}>Delete</button>
-						</div>
-					))}
+				<h2>Can you see this?</h2>
+				{products.map((products) => (
+					<div key={products.id}>
+						<h2>{`Name : ${products.name}`}</h2>
+						<h2>{`Description : ${products.description}`}</h2>
+						<h2>{`Quantity : ${products.quantity}`}</h2>
+						<h2>{`Price : ${products.price}`}</h2>
+						<button onClick={() => handleClick(products.id)}>Edit</button>
+						<button onClick={() => deleteItem(products.id)}>Delete</button>
+					</div>
+				))}
 			</div>
 		</div>
 	);

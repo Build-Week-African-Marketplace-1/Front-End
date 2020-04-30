@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 const initialState = {
   username: "",
@@ -9,10 +9,11 @@ const initialState = {
   isFetching: false,
 };
 
-export default function Login(props) {
+export default function Login() {
   //form state
   const [login, setLogin] = useState(initialState);
   const { register } = useForm();
+  const { push } = useHistory();
 
   //create handle changes
   const handleChanges = (e) => {
@@ -27,15 +28,19 @@ export default function Login(props) {
     axiosWithAuth()
       .post("/api/auth/login", login)
       .then((res) => {
-        console.log(res);
-        props.push("/products");
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+        push(`/product/${res.data.id}`);
+
+        // send id {}
+        ///api/users/id/products
       })
       .catch((err) => console.log("There was a problem with loging in ", err));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Link to={"/products"}>Merchandise</Link>
+      {<Link to={"/products"}>Merchandise</Link>}
 
       <div>Log In</div>
 
