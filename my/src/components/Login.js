@@ -40,7 +40,10 @@ export default function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <Link to={"/products"}>Merchandise</Link> */}
+
+      {<Link to={"/products"}>Merchandise</Link>}
+
+
 
       <div>Log In</div>
 
