@@ -28,7 +28,7 @@ export default function Login(props) {
       .post("/api/auth/login", login)
       .then((res) => {
         console.log(res);
-        props.push("products");
+        props.push("/products");
       })
       .catch((err) => console.log("There was a problem with loging in ", err));
   };
