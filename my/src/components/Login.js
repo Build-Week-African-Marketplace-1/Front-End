@@ -28,13 +28,18 @@ export default function Login(props) {
       .post("/api/auth/login", login)
       .then((res) => {
         console.log(res);
+        props.push("/products");
       })
       .catch((err) => console.log("There was a problem with loging in ", err));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Link to={"/Merchandise"}>Merchandise</Link>
+
+
+      <Link to={"/products"}>Merchandise</Link>
+
+
       <div>Log In</div>
 
       <input
