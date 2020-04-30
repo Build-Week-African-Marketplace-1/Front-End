@@ -6,7 +6,7 @@ const AddProduct = (props) => {
     name: "",
     price: "",
     market_location: "",
-    user_id: "1",
+    user_id: "",
     description: "",
     quantity: "",
   });
@@ -14,12 +14,6 @@ const AddProduct = (props) => {
   const handleChange = (e) => {
     setNewItem({ ...newItem, [e.target.name]: e.target.value });
   };
-
-  //   setProducts(
-  //     products.filter((item) => {
-  //       return item.id !== id;
-  //     })
-  //   );
 
   const submit = (id) => {
     id.preventDefault();
