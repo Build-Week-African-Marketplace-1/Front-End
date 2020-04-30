@@ -35,6 +35,7 @@ export default function Merchandise() {
       />
       <textarea
         name="Description"
+        placeholder="Description"
         ref={register({ required: true, maxLength: 300 })}
       />
 
