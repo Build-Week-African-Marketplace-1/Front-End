@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
 import Header from "./nav";
+import AddItem from "./AddProduct";
 
 import "../styles/registerPage.css";
 
@@ -49,9 +50,12 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="cont">
-      <div className="nav">
+    <div>
+      <div>
         <Header />
+      </div>
+      <div>
+        <AddItem setProducts={setProducts} products={products} />
       </div>
       <h3>List of items for sale</h3>
 
@@ -59,9 +63,9 @@ const ProductsList = () => {
         <Loader type="Grid" color="#3ec1d3" height={80} width={80} />
       )}
 
-      <div className="holder">
+      <div>
         {products.map((products) => (
-          <div className="card" key={products.id}>
+          <div key={products.id}>
             <h2>{`Name : ${products.name}`}</h2>
             <h2>{`Description : ${products.description}`}</h2>
             <h2>{`Quantity : ${products.quantity}`}</h2>
