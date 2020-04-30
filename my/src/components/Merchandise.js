@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import Header from './nav';
+import '../styles/registerPage.css';
 
 const initialItem = {
 	name: '',
@@ -12,12 +14,25 @@ const initialItem = {
 
 export default function Merchandise(props) {
 	const { register } = useForm();
-	const { push } = useHistory();
+	const history = useHistory();
 	const { id } = useParams();
 	const [newItem, setNewItem] = useState(initialItem);
 
 	console.log('Thsi is the new item', newItem);
 	console.log('Thsi is the new item', setNewItem);
+
+	// 	import { useHistory } from "react-router-dom";
+	// function HomeButton() {
+	//   let history = useHistory();
+	//   function handleClick() {
+	//     history.push("/home");
+	//   }
+	//   return (
+	//     <button type="button" onClick={handleClick}>
+	//       Go home
+	//     </button>
+	//   );
+	// }
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -32,6 +47,7 @@ export default function Merchandise(props) {
 			});
 	}, [id]);
 	console.log(id);
+
 	const handleChange = (e) => {
 		setNewItem({ ...newItem, [e.target.name]: e.target.value });
 	};
@@ -39,52 +55,61 @@ export default function Merchandise(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axiosWithAuth()
-			.put(`/api/products/${id}`, newItem)
+			.put(`/api/products/${id}`, newItem) //push maybe?
 			.then((res) => {
 				console.log({ res });
 				setNewItem(res.data);
-				push('/products');
+				history.push('/products');
 			})
 			.catch((err) => console.log(err));
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
-				type="text"
-				placeholder="name"
-				name="name"
-				onChange={handleChange}
-				value={newItem.name}
-				ref={register({ required: true, min: 2, maxLength: 80 })}
-			/>
+		<div className="cont">
+			<div className="nav">
+				<Header />
+			</div>
+			<div className="Holder">
+				<form className="card" onSubmit={handleSubmit}>
+					<div className="info">
+						<input
+							type="text"
+							placeholder="name"
+							name="name"
+							onChange={handleChange}
+							value={newItem.name}
+							ref={register({ required: true, min: 2, maxLength: 80 })}
+						/>
 
-			<input
-				type="number"
-				placeholder="quantity"
-				name="quantity"
-				onChange={handleChange}
-				value={newItem.quantity}
-				ref={register({ required: true, min: 1 })}
-			/>
-			<input
-				type="number"
-				placeholder="Price"
-				name="price"
-				onChange={handleChange}
-				value={newItem.price}
-				ref={register({ required: true })}
-			/>
+						<input
+							type="number"
+							placeholder="quantity"
+							name="quantity"
+							onChange={handleChange}
+							value={newItem.quantity}
+							ref={register({ required: true, min: 1 })}
+						/>
+						<input
+							type="number"
+							placeholder="Price"
+							name="price"
+							onChange={handleChange}
+							value={newItem.price}
+							ref={register({ required: true })}
+						/>
+						<textarea
+							name="description "
+							type="text"
+							onChange={handleChange}
+							placeholder="description"
+							value={newItem.description}
+							ref={register({ required: true, min: 1, maxLength: 300 })}
+						/>
 
-			<textarea
-				name="description "
-				onChange={handleChange}
-				placeholder="description"
-				value={newItem.description}
-				ref={register({ required: true, min: 1, maxLength: 300 })}
-			/>
-
-			<input type="submit" />
-		</form>
+						<input type="submit" />
+					</div>
+				</form>
+			</div>
+		</div>
 	);
 }
