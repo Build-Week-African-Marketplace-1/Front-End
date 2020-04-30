@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const initialItem = {
   name: "",
@@ -32,6 +32,7 @@ export default function Merchandise(props) {
       });
   }, [id]);
   console.log(id);
+
   const handleChange = (e) => {
     setNewItem({ ...newItem, [e.target.name]: e.target.value });
   };
@@ -77,6 +78,7 @@ export default function Merchandise(props) {
       />
       <textarea
         name="description "
+        type="text"
         onChange={handleChange}
         placeholder="description"
         value={newItem.description}
