@@ -14,7 +14,6 @@ export default function Login() {
   const [login, setLogin] = useState(initialState);
   const { register } = useForm();
   const { push } = useHistory();
-  const { id } = useParams();
 
   //create handle changes
   const handleChanges = (e) => {
@@ -29,8 +28,9 @@ export default function Login() {
     axiosWithAuth()
       .post("/api/auth/login", login)
       .then((res) => {
-        console.log(res);
-        push(`api/users/${res.data.id}/products`);
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+        push(`/product/${res.data.id}`);
 
         // send id {}
         ///api/users/id/products
@@ -40,10 +40,7 @@ export default function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-
       {<Link to={"/products"}>Merchandise</Link>}
-
-
 
       <div>Log In</div>
 
