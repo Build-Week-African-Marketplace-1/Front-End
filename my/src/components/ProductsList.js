@@ -12,8 +12,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const ProductsList = (props) => {
 	const [products, setProducts] = useState([]);
-	const [counter, setCounter] = useState(false);
-	const [isFetching, setIsFetching] = useState(false); // make this work
+	const [counter, setCounter] = useState(false); //This is tracking state to help with rendering for add functionality
 	const history = useHistory();
 	const { id } = useParams();
 
@@ -29,7 +28,7 @@ const ProductsList = (props) => {
 			})
 			.catch((err) => console.log(err.response));
 	}, []);
-	useEffect(() => {}, [counter]);
+	useEffect(() => {}, [counter]); //tracker for add function
 
 	const handleClick = (id) => {
 		const item = products.filter((product) => {
@@ -64,17 +63,13 @@ const ProductsList = (props) => {
 				<AddItem
 					setProducts={setProducts}
 					products={products}
-					counter={counter}
+					counter={counter} //tracket for add function
+					setCounter={setCounter}
 				/>
 			</div>
-			<h3>List of items for sale</h3>
-
-			{isFetching && (
-				<Loader type="Grid" color="#3ec1d3" height={80} width={80} />
-			)}
+			<h3>List of items for sale:</h3>
 
 			<div>
-				<h2>Can you see this?</h2>
 				{products.map((products) => (
 					<div key={products.id}>
 						<h2>{`Name : ${products.name}`}</h2>

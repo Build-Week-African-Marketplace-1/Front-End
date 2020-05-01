@@ -24,7 +24,7 @@ const AddProduct = (props) => {
 			.then((res) => {
 				console.log({ res });
 				const payload = res.data;
-				// setNewItem([...newItem, payload]);
+
 				props.setProducts([...props.products, payload]);
 				props.setCounter(!props.counter);
 			})
