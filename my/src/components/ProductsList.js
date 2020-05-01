@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Loader from 'react-loader-spinner';
 import { useHistory, useParams } from 'react-router-dom';
 import Header from './nav';
 import AddItem from './AddProduct';
